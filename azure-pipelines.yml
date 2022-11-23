@@ -1,0 +1,35 @@
+trigger:
+
+- master
+pool:
+  vmImage: 'Ubuntu-18.04'
+
+variables:
+  imageName: 'docker-build'
+
+steps:
+- task: JFrogToolsInstaller@1
+  inputs:
+    artifactoryConnection: 'mkp-artifactory'
+    cliInstallationRepo: 'jfrog-cli-v2-new'
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
+    command: 'build'
+    Dockerfile: 'app/Dockerfile'
+- task: JFrogDocker@1
+  inputs:
+    command: 'Push'
+    artifactoryConnection: 'mkp-artifactory'
+    imageName: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    threads: '3'
+    skipLogin: false
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'mkp-artifactory'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
