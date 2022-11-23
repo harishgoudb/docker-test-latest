@@ -18,6 +18,7 @@ steps:
     repository: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
     command: 'build'
     Dockerfile: 'app/Dockerfile'
+    tags: 'latest'
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
