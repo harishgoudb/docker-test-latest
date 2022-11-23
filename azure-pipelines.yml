@@ -13,7 +13,7 @@ steps:
     artifactoryConnection: 'mkp-artifactory'
     cliInstallationRepo: 'jfrog-cli-v2-new'
 - task: Docker@2
-  displayName: Build an image
+  displayName: Build an images
   inputs:
     repository: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
     command: 'build'
