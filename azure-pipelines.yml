@@ -15,7 +15,7 @@ steps:
 - task: Docker@2
   displayName: Build an images
   inputs:
-    repository: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
+    repository: 'frogtestxray.jfrog.io/docker-build/$(imageName)'
     command: 'build'
     Dockerfile: 'app/Dockerfile'
     tags: 'latest'
@@ -23,7 +23,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'mkp-artifactory'
-    imageName: 'sandeepmkp.jfrog.io/docker-build/$(imageName)'
+    imageName: 'frogtestxray.jfrog.io/docker-build/$(imageName)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
