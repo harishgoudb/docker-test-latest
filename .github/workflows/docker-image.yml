@@ -40,12 +40,14 @@ jobs:
       - name: Grab image version
         id: image_version
         run: |
+          echo "::set-output name=version::$(cat /var/lib/docker/${{ matrix.image }}/VERSION)"
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: /var/lib/docker/${{ matrix.image }}
           push: true
           tags: |
-            mckinsey-sample-test-docker.jfrog.io/test-alpine:v1
+            mckinsey-sample-test-docker.jfrog.io/${{matrix.image}}:v1
+          # driver: docker
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: type=gha,mode=max          
