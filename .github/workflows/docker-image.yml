@@ -30,8 +30,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: hts2-sample-test-docker.jfrog.io
-          username: ${{ secrets.HARISH_USER }}
-          password: ${{ secrets.HARISH_PASS }}
+          username: ${{ secrets.ADMIN_USER }}
+          password: ${{ secrets.ADMIN_PASS }}
       - name: Grab image version
         id: image_version
         run: |
