@@ -40,11 +40,11 @@ jobs:
       - name: Grab image version
         id: image_version
         run: |
-          echo "::set-output name=version::$(cat platform/docker/images/${{ matrix.image }}/VERSION)"
+          echo "::set-output name=version::$(cat ./${{ matrix.image }}/VERSION)"
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: platform/docker/images/${{ matrix.image }}
+          context: ./${{ matrix.image }}
           push: true
           tags: |
             hts2-sample-test-docker.jfrog.io/${{matrix.image}}:v1
