@@ -43,9 +43,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
           tags: |
-            hts2-sample-test-docker.jfrog.io/${{matrix.image}}:v1
-          # driver: docker
+            mckinsey-sample-test-docker.jfrog.io/test-alpine:v1
           cache-from: type=gha
           cache-to: type=gha,mode=max
