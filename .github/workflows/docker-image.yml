@@ -3,11 +3,7 @@ name: build docker images
 on:
   push:
     branches:
-      - 'sekhar-test-buildx-issue'
-
-    paths:
-      - 'platform/docker/**'
-      - '.github/workflows/docker_images.yaml'   - remved this from actions
+      - 'master'
 
 # This workflow contains a single job called "docker" which builds and pushes the docker
 # images contained in the path platform/docker/images to the JFrog registry.
