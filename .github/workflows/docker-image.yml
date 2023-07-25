@@ -34,12 +34,9 @@ jobs:
           password: ${{ secrets.ADMIN_PASS }}
       - name: Grab image version
         id: image_version
-        run: |
-          echo "::set-output name=version::$(cat platform/docker/images/alpine/VERSION)"
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: platform/docker/images/alpine
           push: true
           tags: |
             hts2-sample-test-docker.jfrog.io/alpine:v1
