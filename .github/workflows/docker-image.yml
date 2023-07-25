@@ -21,7 +21,6 @@ jobs:
       matrix:
         image: 
           # - ray_base_llm
-          - test-alpine
           # - workbench_base
     runs-on: ubuntu-latest
     steps:
