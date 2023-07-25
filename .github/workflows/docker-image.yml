@@ -39,7 +39,7 @@ jobs:
           file: ./app/Dockerfile
           push: true
           tags: |
-            hts2-sample-test-docker.jfrog.io/postgres:v3
+            hts2-sample-test-docker.jfrog.io/ubuntu:v3
           # driver: docker
           cache-from: type=gha
           cache-to: type=gha,mode=max
