@@ -32,8 +32,6 @@ jobs:
           registry: hts2-sample-test-docker.jfrog.io
           username: ${{ secrets.ADMIN_USER }}
           password: ${{ secrets.ADMIN_PASS }}
-      - name: Grab image version
-        id: image_version
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
