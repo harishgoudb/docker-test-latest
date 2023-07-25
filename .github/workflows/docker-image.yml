@@ -44,7 +44,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: docker-test-latest/blob/master/app/${{ matrix.image }}
+          context: .
           push: true
           tags: |
             hts2-sample-test-docker.jfrog.io/${{matrix.image}}:v1
